@@ -18,22 +18,20 @@ namespace GradeBook.GradeBooks
             {
                 throw new InvalidOperationException();
             }
-            Students.OrderBy(s => s.AverageGrade);
-            var studentRankSize = Students.Count / 5;
-            int studentIndex = -1;
-            for (int i = 0; i < Students.Count; i++)
-            {
-                if(Students[i].AverageGrade == averageGrade)
-                {
-                    studentIndex = i;
-                    break;
-                }
-            }
-            if (studentIndex <= 5 * studentRankSize && studentIndex > 4 * studentRankSize) { return 'A'; }
-            if (studentIndex <= 4 * studentRankSize && studentIndex > 3 * studentRankSize) { return 'B'; }
-            if (studentIndex <= 3 * studentRankSize && studentIndex > 2 * studentRankSize) { return 'C'; }
-            if (studentIndex <= 2 * studentRankSize && studentIndex > 1 * studentRankSize) { return 'D'; }
+            Students.Sort();
+            Students.Reverse();
 
+            var studentRankSize = Students.Count / 5;
+
+            if (averageGrade >= Students[(studentRankSize*1)-1].AverageGrade )
+                return 'A';
+            else if (averageGrade >= Students[(studentRankSize * 2) - 1].AverageGrade)
+                return 'B';
+            else if (averageGrade >= Students[(studentRankSize * 3) - 1].AverageGrade)
+                return 'C';
+            else if (averageGrade >= Students[(studentRankSize * 4) - 1].AverageGrade)
+                return 'D';
+            else
             return 'F';
         }
     }

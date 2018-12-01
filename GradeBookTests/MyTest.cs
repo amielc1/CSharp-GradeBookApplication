@@ -12,18 +12,18 @@ namespace GradeBookTests
     public class MyTest
     {
 
-        [Fact]
-        public void GradeRange()
-        {
-            RankedGradeBook rankedGradeBook = new RankedGradeBook("Amiel");
+        //[Fact]
+        //public void GradeRange()
+        //{
+        //    RankedGradeBook rankedGradeBook = new RankedGradeBook("Amiel");
           
       
-            for (int i = 0; i < 10; i++)
-                rankedGradeBook.Students.Add(new Student($"Student {i}", StudentType.Standard, EnrollmentType.Campus) {Grades = GenerateGradeList() });
+        //    for (int i = 0; i < 10; i++)
+        //        rankedGradeBook.Students.Add(new Student($"Student {i}", StudentType.Standard, EnrollmentType.Campus) {Grades = GenerateGradeList() });
 
-            var gradeRank = rankedGradeBook.GetLetterGrade(rankedGradeBook.Students[5].AverageGrade);
+        //    var gradeRank = rankedGradeBook.GetLetterGrade(rankedGradeBook.Students[5].AverageGrade);
 
-        }
+        //}
 
         List<double> GenerateGradeList()
         {

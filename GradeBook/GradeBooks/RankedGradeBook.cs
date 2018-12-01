@@ -7,23 +7,21 @@ namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
     {
-        public RankedGradeBook(string name):base(name)
+        public RankedGradeBook(string name) : base(name)
         {
             Type = Enums.GradeBookType.Ranked;
         }
 
         public override void CalculateStatistics()
         {
-            if (Students.Count < 5 )
+            if (Students.Count < 5)
             {
                 Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
-                return; 
+                return;
             }
-            else
-            {
-                base.CalculateStatistics();
-            }
-          
+
+            base.CalculateStatistics();
+
         }
 
         public override void CalculateStudentStatistics(string name)
@@ -33,14 +31,12 @@ namespace GradeBook.GradeBooks
                 Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
                 return;
             }
-            else
-            {
-                base.CalculateStudentStatistics(name);
-            }         
+             base.CalculateStudentStatistics(name);
+           
         }
         public override char GetLetterGrade(double averageGrade)
         {
-            if (Students.Count < 5 )
+            if (Students.Count < 5)
             {
                 throw new InvalidOperationException();
             }
@@ -49,7 +45,7 @@ namespace GradeBook.GradeBooks
 
             var studentRankSize = Students.Count / 5;
 
-            if (averageGrade >= Students[(studentRankSize*1)-1].AverageGrade )
+            if (averageGrade >= Students[(studentRankSize * 1) - 1].AverageGrade)
                 return 'A';
             else if (averageGrade >= Students[(studentRankSize * 2) - 1].AverageGrade)
                 return 'B';
@@ -58,7 +54,7 @@ namespace GradeBook.GradeBooks
             else if (averageGrade >= Students[(studentRankSize * 4) - 1].AverageGrade)
                 return 'D';
             else
-            return 'F';
+                return 'F';
         }
     }
 }
